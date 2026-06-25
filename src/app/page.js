@@ -3,6 +3,7 @@ import Creations from '@/components/Creations'
 import Mission from '@/components/Mission'
 import Apropos from '@/components/Apropos'
 import Tarifs from '@/components/Tarifs'
+import Contact from '@/components/Contact'
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Mission />
       <Apropos />
       <Tarifs />
+      <Contact />
     </main>
   )
 }
