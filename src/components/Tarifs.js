@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 
 const forfaits = [
   {
@@ -49,6 +50,79 @@ const forfaits = [
   },
 ]
 
+function TarifCard({ forfait, index }) {
+  const [hovered, setHovered] = useState(false)
+
+  return (
+    <motion.div
+      key={forfait.nom}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      animate={{
+        y: hovered ? -8 : 0,
+        scale: hovered ? 1.02 : 1,
+      }}
+      className={`rounded-2xl p-8 flex flex-col gap-6 cursor-pointer transition-shadow duration-300 ${
+        forfait.highlight
+          ? 'bg-[#1A1A1A] text-[#FFFFFF]'
+          : 'bg-[#F5F0E8] text-[#1A1A1A]'
+      } ${
+        hovered
+          ? 'shadow-[0_20px_60px_rgba(0,0,0,0.15)]'
+          : 'shadow-none'
+      }`}
+    >
+      <span className={`text-sm px-3 py-1 rounded-full w-fit ${
+        forfait.highlight
+          ? 'bg-[#FFFFFF]/20 text-[#FFFFFF]'
+          : 'bg-[#FFFFFF] text-[#1A1A1A]'
+      }`}>
+        {forfait.badge}
+      </span>
+
+      <div>
+        <h3 className="text-2xl font-[family-name:var(--font-dm-sans)] font-medium mb-2">
+          {forfait.nom}
+        </h3>
+        <p className="text-4xl font-[family-name:var(--font-dm-sans)] font-medium">
+          {forfait.prix}
+        </p>
+      </div>
+
+      <ul className="flex flex-col gap-3 flex-1">
+        {forfait.inclus.map((item) => (
+          <motion.li
+            key={item}
+            animate={{ x: hovered ? 4 : 0 }}
+            transition={{ duration: 0.2 }}
+            className="flex items-center gap-2 text-sm font-[family-name:var(--font-poppins)]"
+          >
+            <span>✓</span> {item}
+          </motion.li>
+        ))}
+      </ul>
+
+      <motion.button
+          animate={{
+            opacity: hovered ? 0.85 : 1,
+          }}
+          transition={{ duration: 0.3 }}
+          className={`w-full py-3 rounded-xl text-sm font-[family-name:var(--font-poppins)] ${
+            forfait.highlight
+              ? 'bg-[#FFFFFF] text-[#1A1A1A]'
+              : 'bg-[#1A1A1A] text-[#FFFFFF]'
+          }`}
+        >
+          {forfait.cta}
+      </motion.button>
+    </motion.div>
+  )
+}
+
 export default function Tarifs() {
   return (
     <section id="tarifs" className="bg-[#FFFFFF] py-24 px-8">
@@ -61,48 +135,7 @@ export default function Tarifs() {
         </h2>
         <div className="grid grid-cols-3 gap-8">
           {forfaits.map((forfait, index) => (
-            <motion.div
-              key={forfait.nom}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className={`rounded-2xl p-8 flex flex-col gap-6 ${
-                forfait.highlight
-                  ? 'bg-[#1A1A1A] text-[#FFFFFF]'
-                  : 'bg-[#F5F0E8] text-[#1A1A1A]'
-              }`}
-            >
-              <span className={`text-sm px-3 py-1 rounded-full w-fit ${
-                forfait.highlight
-                  ? 'bg-[#FFFFFF]/20 text-[#FFFFFF]'
-                  : 'bg-[#FFFFFF] text-[#1A1A1A]'
-              }`}>
-                {forfait.badge}
-              </span>
-              <div>
-                <h3 className="text-2xl font-[family-name:var(--font-dm-sans)] font-medium mb-2">
-                  {forfait.nom}
-                </h3>
-                <p className="text-4xl font-[family-name:var(--font-dm-sans)] font-medium">
-                  {forfait.prix}
-                </p>
-              </div>
-              <ul className="flex flex-col gap-3 flex-1">
-                {forfait.inclus.map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm font-[family-name:var(--font-poppins)]">
-                    <span>✓</span> {item}
-                  </li>
-                ))}
-              </ul>
-              <button className={`w-full py-3 rounded-xl text-sm font-[family-name:var(--font-poppins)] transition-opacity hover:opacity-80 ${
-                forfait.highlight
-                  ? 'bg-[#FFFFFF] text-[#1A1A1A]'
-                  : 'bg-[#1A1A1A] text-[#FFFFFF]'
-              }`}>
-                {forfait.cta}
-              </button>
-            </motion.div>
+            <TarifCard key={forfait.nom} forfait={forfait} index={index} />
           ))}
         </div>
       </div>
