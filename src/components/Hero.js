@@ -1,6 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 const BrowserMockup = () => {
   return (
@@ -73,12 +74,24 @@ const BrowserMockup = () => {
   )
 }
 
-const words = ["Votre", "business", "mérite", "un", "site", "à", "sa", "hauteur"]
-
 export default function Hero() {
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end start'],
+  })
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, -80])
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
+
+  const words = ["Votre", "business", "mérite", "un", "site", "à", "sa", "hauteur"]
+
   return (
-    <section className="bg-[#FFFFFF] min-h-screen flex items-center px-8">
-      <div className="max-w-[1440px] mx-auto w-full flex items-center justify-between gap-16">
+    <section ref={ref} className="bg-[#FFFFFF] min-h-screen flex items-center px-8">
+      <motion.div
+        style={{ y, opacity }}
+        className="max-w-[1440px] mx-auto w-full flex items-center justify-between gap-16"
+      >
         <div className="flex-1 flex flex-col gap-6">
 
           <motion.span
@@ -137,12 +150,13 @@ export default function Hero() {
             </a>
           </motion.div>
         </div>
-        
 
+        {/* Colonne droite */}
         <div className="flex-1 flex justify-center">
           <BrowserMockup />
         </div>
-      </div>
+
+      </motion.div>
     </section>
-  )
-}
+          )
+        }
