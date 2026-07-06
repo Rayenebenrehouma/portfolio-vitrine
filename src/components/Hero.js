@@ -10,18 +10,13 @@ const BrowserMockup = () => {
       transition={{ duration: 0.8, delay: 0.4 }}
       className="relative w-full max-w-[580px]"
     >
-      {/* Fenêtre navigateur */}
       <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#1A1A1A]/10">
-        
-        {/* Barre du navigateur */}
         <div className="bg-[#F0EDE6] px-4 py-3 flex items-center gap-3">
-          {/* Boutons traffic light */}
           <div className="flex gap-2">
             <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
             <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
             <div className="w-3 h-3 rounded-full bg-[#28C840]" />
           </div>
-          {/* Barre d'adresse */}
           <div className="flex-1 bg-[#FFFFFF] rounded-md px-3 py-1 flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-[#28C840]" />
             <span className="text-xs text-[#1A1A1A]/40 font-[family-name:var(--font-poppins)]">
@@ -29,11 +24,7 @@ const BrowserMockup = () => {
             </span>
           </div>
         </div>
-
-        {/* Contenu du site simulé */}
         <div className="bg-[#FFFFFF] p-6 h-[320px] overflow-hidden">
-          
-          {/* Navbar simulée */}
           <div className="flex items-center justify-between mb-6">
             <div className="w-16 h-3 bg-[#1A1A1A] rounded-full" />
             <div className="flex gap-3">
@@ -43,8 +34,6 @@ const BrowserMockup = () => {
               <div className="w-16 h-6 bg-[#1A1A1A] rounded-md" />
             </div>
           </div>
-
-          {/* Hero simulé */}
           <div className="flex gap-4 mb-6">
             <div className="flex-1">
               <div className="w-3/4 h-4 bg-[#1A1A1A] rounded-full mb-2" />
@@ -58,14 +47,8 @@ const BrowserMockup = () => {
             </div>
             <div className="w-32 h-24 bg-[#F5F0E8] rounded-xl" />
           </div>
-
-          {/* Cards simulées */}
           <div className="grid grid-cols-3 gap-3">
-            {[
-              'bg-[#C9B99A]',
-              'bg-[#1A1A1A]',
-              'bg-[#E8E2D9]',
-            ].map((color, i) => (
+            {['bg-[#C9B99A]', 'bg-[#1A1A1A]', 'bg-[#E8E2D9]'].map((color, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 10 }}
@@ -77,8 +60,6 @@ const BrowserMockup = () => {
           </div>
         </div>
       </div>
-
-      {/* Badge +12 sites livrés */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -88,24 +69,18 @@ const BrowserMockup = () => {
         <p className="text-2xl font-[family-name:var(--font-dm-sans)] font-medium text-[#1A1A1A]">+12</p>
         <p className="text-xs text-[#1A1A1A]/50 font-[family-name:var(--font-poppins)]">sites livrés</p>
       </motion.div>
-
-      {/* Effet de flottement */}
-      <motion.div
-        animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute inset-0 pointer-events-none"
-      />
     </motion.div>
   )
 }
+
+const words = ["Votre", "business", "mérite", "un", "site", "à", "sa", "hauteur"]
 
 export default function Hero() {
   return (
     <section className="bg-[#FFFFFF] min-h-screen flex items-center px-8">
       <div className="max-w-[1440px] mx-auto w-full flex items-center justify-between gap-16">
-        
-        {/* Colonne gauche */}
         <div className="flex-1 flex flex-col gap-6">
+
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -115,19 +90,28 @@ export default function Hero() {
             Designer web freelance
           </motion.span>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-6xl font-[family-name:var(--font-dm-sans)] font-medium text-[#1A1A1A] leading-tight"
-          >
-            Votre business mérite un site à sa hauteur
-          </motion.h1>
+          <h1 className="text-6xl font-[family-name:var(--font-dm-sans)] font-medium text-[#1A1A1A] leading-tight flex flex-wrap gap-x-4">
+            {words.map((word, i) => (
+              <motion.span
+                key={word}
+                initial={{ opacity: 0, y: 100, filter: 'blur(12px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                transition={{
+                  duration: 1,
+                  delay: i * 0.2,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="inline-block"
+              >
+                {word}
+              </motion.span>
+            ))}
+          </h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 1.8 }}
             className="text-[#1A1A1A]/60 font-[family-name:var(--font-poppins)] text-lg max-w-md"
           >
             Je crée des sites vitrines modernes et sur-mesure pour artisans, commerçants et indépendants.
@@ -136,7 +120,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 2 }}
             className="flex gap-4"
           >
             <a
@@ -153,12 +137,11 @@ export default function Hero() {
             </a>
           </motion.div>
         </div>
+        
 
-        {/* Colonne droite */}
         <div className="flex-1 flex justify-center">
           <BrowserMockup />
         </div>
-
       </div>
     </section>
   )
