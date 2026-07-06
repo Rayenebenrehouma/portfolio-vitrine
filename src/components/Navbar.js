@@ -1,3 +1,7 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+
 const navLinks = [
   { label: 'Créations', href: '#creations' },
   { label: 'Mission', href: '#mission' },
@@ -6,9 +10,24 @@ const navLinks = [
 ]
 
 export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 h-[72px] bg-[#FFFFFF] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
+      className={`fixed top-0 left-0 right-0 z-50 h-[72px] transition-all duration-500 ${
+        scrolled
+          ? 'bg-[#FFFFFF]/90 backdrop-blur-md shadow-[0_2px_20px_rgba(0,0,0,0.08)]'
+          : 'bg-transparent shadow-none'
+      }`}
     >
       <div className="mx-auto flex h-full max-w-[1440px] items-center justify-between px-8 lg:px-10">
         <a
@@ -31,7 +50,11 @@ export default function Navbar() {
 
           <a
             href="#contact"
-            className="flex h-[38px] min-w-[130px] items-center justify-center bg-[#1A1A1A] px-4 text-[13px] text-[#FFFFFF] transition-opacity hover:opacity-90"
+            className={`flex h-[38px] min-w-[130px] items-center justify-center px-4 text-[13px] transition-all duration-500 ${
+              scrolled
+                ? 'bg-[#1A1A1A] text-[#FFFFFF] hover:opacity-90'
+                : 'bg-[#1A1A1A] text-[#FFFFFF] hover:opacity-90'
+            }`}
           >
             Me contacter
           </a>
