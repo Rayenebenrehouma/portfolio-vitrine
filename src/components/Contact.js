@@ -44,11 +44,11 @@ export default function Contact() {
           >
             <div className="flex flex-col gap-2">
               <span className="text-sm text-[#1A1A1A]/50 font-[family-name:var(--font-poppins)]">Email</span>
-              <span className="text-[#1A1A1A] font-[family-name:var(--font-poppins)]">email@studio.fr</span>
+              <span className="text-[#1A1A1A] font-[family-name:var(--font-poppins)]">rayenebenrehouma@outlook.com</span>
             </div>
             <div className="flex flex-col gap-2">
               <span className="text-sm text-[#1A1A1A]/50 font-[family-name:var(--font-poppins)]">Téléphone</span>
-              <span className="text-[#1A1A1A] font-[family-name:var(--font-poppins)]">06 00 00 00 00</span>
+              <span className="text-[#1A1A1A] font-[family-name:var(--font-poppins)]">07 83 09 92 00</span>
             </div>
             <div className="flex flex-col gap-2">
               <span className="text-sm text-[#1A1A1A]/50 font-[family-name:var(--font-poppins)]">Zone</span>

@@ -1,6 +1,7 @@
 import { DM_Sans, Poppins } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import './globals.css'
+import SmoothScroll from '@/components/SmoothScroll'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -22,8 +23,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <body className={`${dmSans.variable} ${poppins.variable}`}>
-        <Navbar />
-        {children}
+        <SmoothScroll>
+          <Navbar />
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   )
