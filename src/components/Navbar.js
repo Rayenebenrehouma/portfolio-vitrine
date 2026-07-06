@@ -50,7 +50,7 @@ export default function Navbar() {
 
           <a
             href="#contact"
-            className={`flex h-[38px] min-w-[130px] items-center justify-center px-4 text-[13px] transition-all duration-500 ${
+            className={`btn-shine flex h-[38px] min-w-[130px] items-center justify-center px-4 text-[13px] transition-all duration-500 ${
               scrolled
                 ? 'bg-[#1A1A1A] text-[#FFFFFF] hover:opacity-90'
                 : 'bg-[#1A1A1A] text-[#FFFFFF] hover:opacity-90'

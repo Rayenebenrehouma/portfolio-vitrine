@@ -98,7 +98,7 @@ export default function Contact() {
             />
             <button
               onClick={handleSubmit}
-              className="w-full py-4 bg-[#1A1A1A] text-[#FFFFFF] rounded-xl text-sm font-[family-name:var(--font-poppins)] hover:opacity-80 transition-opacity"
+              className="btn-shine w-full py-4 bg-[#1A1A1A] text-[#FFFFFF] rounded-xl text-sm font-[family-name:var(--font-poppins)] hover:opacity-80 transition-opacity"
             >
               Envoyer le message
             </button>

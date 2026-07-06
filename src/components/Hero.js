@@ -138,13 +138,13 @@ export default function Hero() {
           >
             <a
               href="#creations"
-              className="px-6 py-3 bg-[#1A1A1A] text-[#FFFFFF] rounded-xl font-[family-name:var(--font-poppins)] text-sm hover:opacity-80 transition-opacity"
+              className="btn-shine px-6 py-3 bg-[#1A1A1A] text-[#FFFFFF] rounded-xl font-[family-name:var(--font-poppins)] text-sm hover:opacity-80 transition-opacity"
             >
               Voir mes créations
             </a>
             <a
               href="#tarifs"
-              className="px-6 py-3 border border-[#1A1A1A]/30 text-[#1A1A1A] rounded-xl font-[family-name:var(--font-poppins)] text-sm hover:bg-[#1A1A1A]/5 transition-colors"
+              className="btn-shine-dark px-6 py-3 border border-[#1A1A1A]/30 text-[#1A1A1A] rounded-xl font-[family-name:var(--font-poppins)] text-sm hover:bg-[#1A1A1A]/5 transition-colors"
             >
               Mes Tarifs
             </a>

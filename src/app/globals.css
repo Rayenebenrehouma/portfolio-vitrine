@@ -17,3 +17,59 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-dm-sans);
 }
+
+/* Effet de brillance sur les boutons */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  transition: none;
+}
+
+.btn-shine:hover::after {
+  left: 125%;
+  transition: left 0.6s ease;
+}
+
+/* Effet shine pour bouton clair */
+.btn-shine-dark {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine-dark::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  transform: skewX(-20deg);
+  transition: none;
+}
+
+.btn-shine-dark:hover::after {
+  left: 125%;
+  transition: left 0.6s ease;
+}

@@ -111,7 +111,7 @@ function TarifCard({ forfait, index }) {
             opacity: hovered ? 0.85 : 1,
           }}
           transition={{ duration: 0.3 }}
-          className={`w-full py-3 rounded-xl text-sm font-[family-name:var(--font-poppins)] ${
+          className={`${forfait.highlight ? 'btn-shine-dark' : 'btn-shine'} w-full py-3 rounded-xl text-sm font-[family-name:var(--font-poppins)] ${
             forfait.highlight
               ? 'bg-[#FFFFFF] text-[#1A1A1A]'
               : 'bg-[#1A1A1A] text-[#FFFFFF]'
