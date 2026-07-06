@@ -42,7 +42,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="font-[family-name:var(--font-dm-sans)] text-xl font-medium text-[#1A1A1A] transition-opacity hover:opacity-70"
+              className="nav-link font-[family-name:var(--font-dm-sans)] text-xl font-medium text-[#1A1A1A] transition-opacity hover:opacity-70"
             >
               {link.label}
             </a>
